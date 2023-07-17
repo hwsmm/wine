@@ -1595,6 +1595,7 @@ then
                  AC_CHECK_LIB(gstreamer-1.0,gst_pad_new,[:],,[$GSTREAMER_LIBS])],
                 [AC_MSG_RESULT([no])
                  ac_glib2_broken=yes
+                 enable_winegstreamer=${enable_winegstreamer:-no}
                  WINE_NOTICE([glib-2.0 pkgconfig configuration is for the wrong architecture, winegstreamer won't be built.])])])])
 fi
 WINE_NOTICE_WITH(gstreamer,[test "x$ac_glib2_broken" != xyes -a "x$ac_cv_lib_gstreamer_1_0_gst_pad_new" != xyes],
@@ -2389,6 +2390,7 @@ WINE_CONFIG_MAKEFILE(dlls/avifile.dll16,enable_win16)
 WINE_CONFIG_MAKEFILE(dlls/avrt)
 WINE_CONFIG_MAKEFILE(dlls/bcrypt)
 WINE_CONFIG_MAKEFILE(dlls/bcrypt/tests)
+WINE_CONFIG_MAKEFILE(dlls/bcryptprimitives)
 WINE_CONFIG_MAKEFILE(dlls/bluetoothapis)
 WINE_CONFIG_MAKEFILE(dlls/browseui)
 WINE_CONFIG_MAKEFILE(dlls/browseui/tests)
@@ -2631,6 +2633,8 @@ WINE_CONFIG_MAKEFILE(dlls/gdi32)
 WINE_CONFIG_MAKEFILE(dlls/gdi32/tests)
 WINE_CONFIG_MAKEFILE(dlls/gdiplus)
 WINE_CONFIG_MAKEFILE(dlls/gdiplus/tests)
+WINE_CONFIG_MAKEFILE(dlls/geolocation)
+WINE_CONFIG_MAKEFILE(dlls/geolocation/tests)
 WINE_CONFIG_MAKEFILE(dlls/glu32)
 WINE_CONFIG_MAKEFILE(dlls/gphoto2.ds)
 WINE_CONFIG_MAKEFILE(dlls/gpkcsp)
@@ -3140,8 +3144,6 @@ WINE_CONFIG_MAKEFILE(dlls/windows.devices.bluetooth)
 WINE_CONFIG_MAKEFILE(dlls/windows.devices.bluetooth/tests)
 WINE_CONFIG_MAKEFILE(dlls/windows.devices.enumeration)
 WINE_CONFIG_MAKEFILE(dlls/windows.devices.enumeration/tests)
-WINE_CONFIG_MAKEFILE(dlls/windows.devices.geolocation.geolocator)
-WINE_CONFIG_MAKEFILE(dlls/windows.devices.geolocation.geolocator/tests)
 WINE_CONFIG_MAKEFILE(dlls/windows.gaming.input)
 WINE_CONFIG_MAKEFILE(dlls/windows.gaming.input/tests)
 WINE_CONFIG_MAKEFILE(dlls/windows.gaming.ui.gamebar)

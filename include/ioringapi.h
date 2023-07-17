@@ -1,6 +1,5 @@
-/* WinRT Windows.Devices.Geolocation.Geolocator Implementation
- *
- * Copyright 2023 Fabian Maurer
+/*
+ * Copyright (C) 2023 Paul Gofman for CodeWeavers
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,23 +16,27 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-#ifndef __WINE_WINDOWS_DEVICES_GEOLOCATION_GEOLOCATOR_PRIVATE_H
-#define __WINE_WINDOWS_DEVICES_GEOLOCATION_GEOLOCATOR_PRIVATE_H
+#ifndef __IORINGAPI_H_
+#define __IORINGAPI_H_
 
-#include <stdarg.h>
+#include <ntioring_x.h>
 
-#define COBJMACROS
-#include "windef.h"
-#include "winbase.h"
-#include "winstring.h"
+struct IORING_CAPABILITIES
+{
+    IORING_VERSION       MaxVersion;
+    UINT32               MaxSubmissionQueueSize;
+    UINT32               MaxCompletionQueueSize;
+    IORING_FEATURE_FLAGS FeatureFlags;
+};
+typedef struct IORING_CAPABILITIES IORING_CAPABILITIES;
 
-#include "activation.h"
-#include "weakreference.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-#define WIDL_using_Windows_Foundation
-#define WIDL_using_Windows_Foundation_Collections
-#include "windows.foundation.h"
-#define WIDL_using_Windows_Devices_Geolocation
-#include "windows.devices.geolocation.h"
+HRESULT WINAPI QueryIoRingCapabilities(IORING_CAPABILITIES *caps);
 
+#ifdef __cplusplus
+}
+#endif
 #endif

@@ -147,7 +147,6 @@ struct win_proc_params
     UINT msg;
     WPARAM wparam;
     LPARAM lparam;
-    LRESULT *result;
     BOOL ansi;
     BOOL ansi_dst;
     BOOL needs_unpack;
@@ -189,7 +188,6 @@ struct draw_text_params
     HDC hdc;
     int count;
     RECT rect;
-    RECT *ret_rect; /* FIXME: Use NtCallbackReturn instead */
     UINT flags;
     WCHAR str[1];
 };

@@ -1,6 +1,5 @@
-/* Runtime Classes for windows.devices.geolocation.geolocator.dll
- *
- * Copyright 2023 Fabian Maurer
+/*
+ * Copyright 2023 Christopher S. Denton
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,10 +16,12 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-#pragma makedep register
+#include <stdarg.h>
+#include "windef.h"
+#include "winbase.h"
+#include "ntsecapi.h"
 
-#ifdef __WIDL__
-#pragma winrt ns_prefix
-#endif
-
-#include "windows.devices.geolocation.idl"
+BOOL WINAPI ProcessPrng(BYTE *data, SIZE_T size)
+{
+    return RtlGenRandom(data, size);
+}
